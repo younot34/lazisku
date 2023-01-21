@@ -39,7 +39,7 @@ class _NewTripScreenState extends State<NewTripScreen>
     zoom: 14.4746,
   );
 
-  String? buttonTitle = "rute";
+  String? buttonTitle = "accept";
   Color? buttonColor = Colors.green;
 
   Set<Marker> setOfMarkers = Set<Marker>();

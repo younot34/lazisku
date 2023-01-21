@@ -25,7 +25,7 @@ class EarningsTabPage extends StatefulWidget {
 
 class _EarningsTabPageState extends State<EarningsTabPage> {
   UserRideRequestInformation? userRideRequestDetails;
-  String? buttonTitle = "rute";
+  String? buttonTitle = "accept";
   Color? buttonColor = Colors.green;
 
   Set<Marker> setOfMarkers = Set<Marker>();
@@ -133,12 +133,84 @@ class _EarningsTabPageState extends State<EarningsTabPage> {
                         ),
                       ),
                     ),
-
-
                   ],
                 ),
               ),
           ),
+          ElevatedButton.icon(
+                      onPressed: ()async
+
+                      {
+                          
+                        //[driver has arrived at user PickUp Location] - Arrived Button
+                        if(rideRequestStatus == "accept")
+                        {
+                          
+                          rideRequestStatus = "arrived";
+
+                          FirebaseDatabase.instance.ref()
+                              .child("All Ride Requests")
+                              .child(widget.userRideRequestDetails!.rideRequestId!)
+                              .child("status")
+                              .set(rideRequestStatus);
+
+                          setState(() {
+                           buttonTitle = "Let's Go"; //start the trip
+                            buttonColor = Colors.lightGreen;
+                          }); 
+
+                          showDialog(
+                              context: context,
+                              barrierDismissible: false,
+                              builder: (BuildContext c)=> NewTripScreen()
+                          );
+                          Navigator.push(context, MaterialPageRoute(builder: (c)=> NewTripScreen()));
+
+                          // await drawPolyLineFromOriginToDestination(
+                          //     widget.userRideRequestDetails!.originLatLng!,
+                          //     widget.userRideRequestDetails!.destinationLatLng!
+                          // );
+
+                        }
+                        //[user has already sit in driver's car. Driver start trip now] - Lets Go Button
+                        // else if(rideRequestStatus == "rute")
+                        // {
+                        //   rideRequestStatus = "ontrip";
+
+                        //   FirebaseDatabase.instance.ref()
+                        //       .child("All Ride Requests")
+                        //       .child(widget.userRideRequestDetails!.rideRequestId!)
+                        //       .child("status")
+                        //       .set(rideRequestStatus);
+
+                        //   setState(() {
+                        //     buttonTitle = "End Trip"; //end the trip
+                        //     buttonColor = Colors.redAccent;
+                        //   });
+                        // }
+                        // //[user/Driver reached to the dropOff Destination Location] - End Trip Button
+                        // else if(rideRequestStatus == "ontrip")
+                        // {
+                        //   endTripNow();
+                        // }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: buttonColor,
+                      ),
+                      icon: const Icon(
+                        Icons.directions_car,
+                        color: Colors.white,
+                        size: 25,
+                      ),
+                      label: Text(
+                        buttonTitle!,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
           // Positioned(
           //   bottom: 0,
           //   left: 0,
