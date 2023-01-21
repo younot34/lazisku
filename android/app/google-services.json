@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "925376595646",
+    "firebase_url": "https://lazm-f76ff-default-rtdb.firebaseio.com",
+    "project_id": "lazm-f76ff",
+    "storage_bucket": "lazm-f76ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925376595646:android:9ad2e5a69083bf43a2c0ef",
+        "android_client_info": {
+          "package_name": "com.mando.lazm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "925376595646-0v5gds3n4tl1k43t7noes13jg10jaqtg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC34xAclhc82jVzYMRbOwh4d0k8uRMUUmc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "925376595646-0v5gds3n4tl1k43t7noes13jg10jaqtg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
