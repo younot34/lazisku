@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lazis/tabPages/earning_tab.dart';
 import 'package:lazis/tabPages/home_tab.dart';
+// import 'package:lazis/tabPages/permintaan_tab.dart';
 import 'package:lazis/tabPages/profile_tab.dart';
 import 'package:lazis/tabPages/rating_tab.dart';
+
 
 
 class MainScreen extends StatefulWidget {
@@ -37,11 +39,12 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
       body: TabBarView(
         physics: const NeverScrollableScrollPhysics(),
         controller: tabController,
-        children: const [
-          HomeTabPage(),
-          EarningsTabPage(),
-          RatingTabPage(),
-          ProfileTabPage(),
+        children: [
+          const HomeTabPage(),
+          const EarningsTabPage(),
+          // RatingTabPage(),
+          PermintaanTab(),
+          const ProfileTabPage(),
         ],),
         bottomNavigationBar: BottomNavigationBar(
           items: const [
@@ -49,8 +52,10 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
             label: "Home",),
             BottomNavigationBarItem(icon: Icon(Icons.credit_card),
             label: "History",),
-            BottomNavigationBarItem(icon: Icon(Icons.star),
-            label: "Rating",),
+            // BottomNavigationBarItem(icon: Icon(Icons.star),
+            // label: "Rating",),
+            BottomNavigationBarItem(icon: Icon(Icons.notifications),
+            label: "Permintaan",),
             BottomNavigationBarItem(icon: Icon(Icons.person),
             label: "Account",),
           ],

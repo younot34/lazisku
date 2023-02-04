@@ -1,147 +1,286 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:lazis/assistants/assistant_methods.dart';
+import 'package:lazis/global/global.dart';
+import 'package:lazis/infoHandler/app_info.dart';
+import 'package:lazis/mainScreen/new_trip_screen.dart';
+import 'package:lazis/models/user_ride_request_information.dart';
+import 'package:lazis/widgets/history_design_ui.dart';
 import 'package:provider/provider.dart';
-import 'package:smooth_star_rating_nsafe/smooth_star_rating.dart';
+import 'package:lazis/mainScreen/main_Screen.dart';
 
-import '../global/global.dart';
-import '../infoHandler/app_info.dart';
-
-
-
-class RatingTabPage extends StatefulWidget
-{
-  const RatingTabPage({Key? key}) : super(key: key);
+class PermintaanTab extends StatefulWidget {
+  UserRideRequestInformation? userRideRequestDetails;
+  PermintaanTab(
+      {super.key, UserRideRequestInformation? userRideRequestDetails});
 
   @override
-  State<RatingTabPage> createState() => _RatingTabPageState();
+  State<PermintaanTab> createState() => _PermintaanTabState();
 }
 
-
-
-
-class _RatingTabPageState extends State<RatingTabPage>
-{
-  double ratingsNumber=0;
-  String titleStarRating = "baik";
-
+class _PermintaanTabState extends State<PermintaanTab> {
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-
-    getRatingsNumber();
-  }
-
-  getRatingsNumber()
-  {
-    setState(() {
-      ratingsNumber = double.parse(Provider.of<AppInfo>(context, listen: false).driverAverageRating);
-    });
-
-    setupRatingsTitle();
-  }
-
-  setupRatingsTitle()
-  {
-    if(ratingsNumber == 1)
-    {
-      setState(() {
-        titleStarRating = "sangat buruk";
-      });
-    }
-    if(ratingsNumber == 2)
-    {
-      setState(() {
-        titleStarRating = "buruk";
-      });
-    }
-    if(ratingsNumber == 3)
-    {
-      setState(() {
-        titleStarRating = "baik";
-      });
-    }
-    if(ratingsNumber == 4)
-    {
-      setState(() {
-        titleStarRating = "sangat baik";
-      });
-    }
-    if(ratingsNumber == 5)
-    {
-      setState(() {
-        titleStarRating = "mengagumkan";
-      });
-    }
-  }
-
-  @override
-  Widget build(BuildContext context)
-  {
+  Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffF67034),
-      body: Dialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(14),
-        ),
-        backgroundColor: Colors.white60,
-        child: Container(
-          margin: const EdgeInsets.all(8),
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: Colors.white54,
-            borderRadius: BorderRadius.circular(6),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-
-              const SizedBox(height: 22.0,),
-
-              const Text(
-                "Rating Anda:",
-                style: TextStyle(
-                  fontSize: 22,
-                  letterSpacing: 2,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black54,
-                ),
-              ),
-
-              const SizedBox(height: 22.0,),
-
-              const Divider(height: 4.0, thickness: 4.0,),
-
-              const SizedBox(height: 22.0,),
-
-              SmoothStarRating(
-                rating: ratingsNumber,
-                allowHalfRating: false,
-                starCount: 5,
-                color: Colors.green,
-                borderColor: Colors.green,
-                size: 46,
-              ),
-
-              const SizedBox(height: 12.0,),
-
-              Text(
-                titleStarRating,
-                style: const TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.green,
-                ),
-              ),
-
-              const SizedBox(height: 18.0,),
-
-            ],
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        centerTitle: true,
+        backgroundColor: const Color(0xffF67034),
+        title: const Text(
+          "Permintaan",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 24,
           ),
         ),
       ),
+      body: Column(
+        children: [
+          //total number of trips
+          ListView.separated(
+            separatorBuilder: (context, i) => const Divider(
+              color: Colors.grey,
+              thickness: 2,
+              height: 2,
+            ),
+            itemBuilder: (context, i) {
+              return Card(
+                color: Colors.white54,
+                child: Container(
+                  margin: const EdgeInsets.all(8),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.grey[800],
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const SizedBox(
+                        height: 14,
+                      ),
+
+                      Image.asset(
+                        "images/car_logo.png",
+                        width: 160,
+                      ),
+
+                      const SizedBox(
+                        height: 10,
+                      ),
+
+                      //title
+                      const Text(
+                        "New Ride Request",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 22,
+                            color: Colors.grey),
+                      ),
+
+                      const SizedBox(height: 14.0),
+
+                      const Divider(
+                        height: 3,
+                        thickness: 3,
+                      ),
+
+                      //addresses origin destination
+                      Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          children: [
+                            //origin location with icon
+                            Row(
+                              children: [
+                                Image.asset(
+                                  "images/origin.png",
+                                  width: 30,
+                                  height: 30,
+                                ),
+                                const SizedBox(
+                                  width: 14,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    widget
+                                        .userRideRequestDetails!.originAddress!,
+                                    style: const TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                            const SizedBox(height: 20.0),
+
+                            //destination location with icon
+                            Row(
+                              children: [
+                                Image.asset(
+                                  "images/destination.png",
+                                  width: 30,
+                                  height: 30,
+                                ),
+                                const SizedBox(
+                                  width: 14,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    widget.userRideRequestDetails!
+                                        .destinationAddress!,
+                                    style: const TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      const Divider(
+                        height: 3,
+                        thickness: 3,
+                      ),
+
+                      //buttons cancel accept
+                      Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.red,
+                              ),
+                              onPressed: () {
+                                audioPlayer.pause();
+                                audioPlayer.stop();
+                                audioPlayer = AssetsAudioPlayer();
+
+                                //cancel the rideRequest
+                                FirebaseDatabase.instance
+                                    .ref()
+                                    .child("All Ride Requests")
+                                    .child(widget
+                                        .userRideRequestDetails!.rideRequestId!)
+                                    .remove()
+                                    .then((value) {
+                                  FirebaseDatabase.instance
+                                      .ref()
+                                      .child("driver")
+                                      .child(currentFirebaseUser!.uid)
+                                      .child("newRideStatus")
+                                      .set("idle");
+                                }).then((value) {
+                                  FirebaseDatabase.instance
+                                      .ref()
+                                      .child("driver")
+                                      .child(currentFirebaseUser!.uid)
+                                      .child("tripsHistory")
+                                      .child(widget.userRideRequestDetails!
+                                          .rideRequestId!)
+                                      .remove();
+                                }).then((value) {
+                                  Fluttertoast.showToast(
+                                      msg:
+                                          "Ride Request has been Cancelled, Successfully. Restart App Now.");
+                                });
+
+                                Future.delayed(
+                                    const Duration(milliseconds: 3000), () {
+                                  SystemNavigator.pop();
+                                });
+                              },
+                              child: Text(
+                                "Cancel".toUpperCase(),
+                                style: const TextStyle(
+                                  fontSize: 14.0,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 25.0),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.green,
+                              ),
+                              onPressed: () {
+                                audioPlayer.pause();
+                                audioPlayer.stop();
+                                audioPlayer = AssetsAudioPlayer();
+
+                                //accept the rideRequest
+                                acceptRideRequest(context);
+                              },
+                              child: Text(
+                                "Accept".toUpperCase(),
+                                style: const TextStyle(
+                                  fontSize: 14.0,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+            itemCount: Provider.of<AppInfo>(context, listen: false)
+                .allTripsHistoryInformationList
+                .length,
+            physics: const ClampingScrollPhysics(),
+            shrinkWrap: true,
+          ),
+        ],
+      ),
     );
+  }
+
+  acceptRideRequest(BuildContext context) {
+    String getRideRequestId = "";
+    FirebaseDatabase.instance
+        .ref()
+        .child("driver")
+        .child(currentFirebaseUser!.uid)
+        .child("newRideStatus")
+        .once()
+        .then((snap) {
+      if (snap.snapshot.value != null) {
+        getRideRequestId = snap.snapshot.value.toString();
+      } else {
+        Fluttertoast.showToast(msg: "This ride request do not exists.");
+      }
+
+      if (getRideRequestId == widget.userRideRequestDetails!.rideRequestId) {
+        FirebaseDatabase.instance
+            .ref()
+            .child("driver")
+            .child(currentFirebaseUser!.uid)
+            .child("newRideStatus")
+            .set("accepted");
+
+        AssistantMethods.pauseLiveLocationUpdates();
+
+        //trip started now - send driver to new tripScreen
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (c) => NewTripScreen(
+                      userRideRequestDetails: widget.userRideRequestDetails,
+                    )));
+      } else {
+        Fluttertoast.showToast(msg: "This Ride Request do not exists.");
+      }
+    });
   }
 }

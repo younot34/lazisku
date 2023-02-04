@@ -7,6 +7,8 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:lazis/tabPages/permintaan_tab.dart';
+import 'package:lazis/tabPages/rating_tab.dart';
 
 class PushNotificationSystem
 {
@@ -85,7 +87,7 @@ class PushNotificationSystem
 
         showDialog(
             context: context,
-            builder: (BuildContext context) => NotificationDialogBox(
+            builder: (BuildContext context) => PermintaanTab(
                 userRideRequestDetails: userRideRequestDetails,
             ),
         );
