@@ -85,7 +85,7 @@ class _FareAmountCollectionDialogState extends State<FareAmountCollectionDialog>
               padding: const EdgeInsets.all(18.0),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.green,
+                  backgroundColor: Colors.green,
                 ),
                 onPressed: ()
                 {

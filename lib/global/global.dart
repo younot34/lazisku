@@ -7,8 +7,6 @@ import 'package:lazis/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:geolocator/geolocator.dart';
 
-
-
 final FirebaseAuth fAuth = FirebaseAuth.instance;
 User? currentFirebaseUser;
 UserModel? userModelCurrentInfo;
@@ -20,5 +18,5 @@ DriverData onlineDriverData = DriverData();
 String? driverVehicleType = "";
 String titleStarRating = "";
 bool isDriverActive = false;
-String statusText = "Now Offline";
+String statusText = "Sekarang Offline";
 Color buttonColor = Colors.grey;

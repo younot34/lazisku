@@ -28,7 +28,7 @@ class _PermintaanTabState extends State<PermintaanTab> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: true,
-        backgroundColor: const Color(0xffF67034),
+        backgroundColor: const Color(0xff03A9F4),
         title: const Text(
           "Permintaan",
           style: TextStyle(
@@ -39,7 +39,7 @@ class _PermintaanTabState extends State<PermintaanTab> {
       ),
       body: Column(
         children: [
-          //total number of trips
+          //listpermintaan
           ListView.separated(
             separatorBuilder: (context, i) => const Divider(
               color: Colors.grey,
@@ -74,7 +74,7 @@ class _PermintaanTabState extends State<PermintaanTab> {
 
                       //title
                       const Text(
-                        "New Ride Request",
+                        "Permintaan Baru",
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 22,
@@ -88,12 +88,12 @@ class _PermintaanTabState extends State<PermintaanTab> {
                         thickness: 3,
                       ),
 
-                      //addresses origin destination
+                      //alamat
                       Padding(
                         padding: const EdgeInsets.all(20.0),
                         child: Column(
                           children: [
-                            //origin location with icon
+                            //lokasi pasien
                             Row(
                               children: [
                                 Image.asset(
@@ -119,7 +119,7 @@ class _PermintaanTabState extends State<PermintaanTab> {
 
                             const SizedBox(height: 20.0),
 
-                            //destination location with icon
+                            //lokasi perminataan
                             Row(
                               children: [
                                 Image.asset(
@@ -151,7 +151,7 @@ class _PermintaanTabState extends State<PermintaanTab> {
                         thickness: 3,
                       ),
 
-                      //buttons cancel accept
+                      //buttons tolak terima
                       Padding(
                         padding: const EdgeInsets.all(20.0),
                         child: Row(
@@ -166,7 +166,7 @@ class _PermintaanTabState extends State<PermintaanTab> {
                                 audioPlayer.stop();
                                 audioPlayer = AssetsAudioPlayer();
 
-                                //cancel the rideRequest
+                                //Tolak Permintaan
                                 FirebaseDatabase.instance
                                     .ref()
                                     .child("All Ride Requests")
@@ -201,7 +201,7 @@ class _PermintaanTabState extends State<PermintaanTab> {
                                 });
                               },
                               child: Text(
-                                "Cancel".toUpperCase(),
+                                "Tolak".toUpperCase(),
                                 style: const TextStyle(
                                   fontSize: 14.0,
                                 ),
@@ -217,11 +217,11 @@ class _PermintaanTabState extends State<PermintaanTab> {
                                 audioPlayer.stop();
                                 audioPlayer = AssetsAudioPlayer();
 
-                                //accept the rideRequest
+                                //Terima permintaan
                                 acceptRideRequest(context);
                               },
                               child: Text(
-                                "Accept".toUpperCase(),
+                                "Terima".toUpperCase(),
                                 style: const TextStyle(
                                   fontSize: 14.0,
                                 ),

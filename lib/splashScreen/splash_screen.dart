@@ -9,24 +9,22 @@ import 'package:lazis/mainScreen/main_Screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
-  
+
   @override
-  _SplashScreenState createState() =>_SplashScreenState();
-  
+  _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen>{
-  startTimer(){
-    
-    Timer(const Duration(seconds:2), () async {
-      if(await fAuth.currentUser != null){
+class _SplashScreenState extends State<SplashScreen> {
+  startTimer() {
+    Timer(const Duration(seconds: 2), () async {
+      if (await fAuth.currentUser != null) {
         currentFirebaseUser = fAuth.currentUser;
-        Navigator.push(context, MaterialPageRoute(builder: (c)=> MainScreen()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (c) => MainScreen()));
+      } else {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (c) => LoginScreen()));
       }
-      else{
-        Navigator.push(context, MaterialPageRoute(builder: (c)=> LoginScreen()));
-      }
-      
     });
   }
 
@@ -36,38 +34,34 @@ class _SplashScreenState extends State<SplashScreen>{
     super.initState();
     startTimer();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      backgroundColor:Colors.white ,
-      body: 
-      Center(
-        
-        child: 
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            
-          
+      backgroundColor: Colors.white,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            
-            Image.asset("images/logo.png",
-            width: 200,
-            
+            Image.asset(
+              "images/logo.png",
+              width: 200,
             ),
-            const SizedBox(height: 10,),
-            const Text("Driver LazisMu",
-            style: TextStyle(
-              fontSize: 26,
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-        ),),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text(
+              "Driver LazisMu",
+              style: TextStyle(
+                fontSize: 26,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ],
         ),
-
       ),
-
-    ) ;
+    );
   }
 }

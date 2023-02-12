@@ -73,7 +73,7 @@ class _ProfileTabPageState extends State<ProfileTabPage> {
         automaticallyImplyLeading: false,
         elevation: 2,
         centerTitle: true,
-        backgroundColor: const Color(0xffF67034),
+        backgroundColor: const Color(0xff03A9F4),
         title: const Text(
           "Profile",
           style: TextStyle(
@@ -87,6 +87,7 @@ class _ProfileTabPageState extends State<ProfileTabPage> {
           const SizedBox(
             height: 16,
           ),
+          //name
           Text(
             onlineDriverData.name!,
             style: const TextStyle(
@@ -127,35 +128,6 @@ class _ProfileTabPageState extends State<ProfileTabPage> {
             height: 4.0,
             thickness: 4.0,
           ),
-          //name
-          // Text(
-          //   onlineDriverData.name!,
-          //   style: const TextStyle(
-          //     fontSize: 50.0,
-          //     color: Colors.black,
-          //     fontWeight: FontWeight.bold,
-          //   ),
-          // ),
-
-          // const Text(
-          //   " driver",
-          //   style: TextStyle(
-          //     fontSize: 18.0,
-          //     color: Colors.black,
-          //     fontWeight: FontWeight.bold,
-          //   ),
-          // ),
-
-          // const SizedBox(
-          //   height: 20,
-          //   width: 200,
-          //   child: Divider(
-          //     color: Color(0xffF67034),
-          //     height: 2,
-          //     thickness: 2,
-          //   ),
-          // ),
-
           const SizedBox(
             height: 38.0,
           ),
@@ -185,12 +157,12 @@ class _ProfileTabPageState extends State<ProfileTabPage> {
           ElevatedButton(
             onPressed: () {
               fAuth.signOut();
-              // SystemNavigator.pop();
+              // Navigator.push(); menuju ke login
               Navigator.push(
                   context, MaterialPageRoute(builder: (c) => LoginScreen()));
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xffF67034),
+              backgroundColor: const Color(0xff03A9F4),
             ),
             child: const Text(
               "Logout",
