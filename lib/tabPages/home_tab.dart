@@ -253,7 +253,7 @@ class _HomeTabPageState extends State<HomeTabPage> {
     Future.delayed(const Duration(milliseconds: 2000), () {
       //SystemChannels.platform.invokeMethod("SystemNavigator.pop");
       // SystemNavigator.pop();
-      Navigator.push(context, MaterialPageRoute(builder: (c) => MainScreen()));
+      Navigator.push(context, MaterialPageRoute(builder: (c) => const MainScreen()));
     });
   }
 }

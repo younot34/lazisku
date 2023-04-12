@@ -113,7 +113,7 @@ class PushNotificationSystem {
         .child("token")
         .set(registrationToken);
 
-    messaging.subscribeToTopic("allDrivers");
-    messaging.subscribeToTopic("allUsers");
+    messaging.subscribeToTopic("allDriver");
+    messaging.subscribeToTopic("allUser");
   }
 }

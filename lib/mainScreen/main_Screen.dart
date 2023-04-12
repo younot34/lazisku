@@ -5,6 +5,8 @@ import 'package:lazis/tabPages/profile_tab.dart';
 import 'package:lazis/tabPages/rating_tab.dart';
 
 class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
+
   @override
   State<MainScreen> createState() => _MainScreenState();
 }

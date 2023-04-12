@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:lazis/splashScreen/splash_screen.dart';
+import 'package:lazis/tabPages/home_tab.dart';
 import 'package:provider/provider.dart';
 import 'infoHandler/app_info.dart';
 
@@ -16,9 +17,9 @@ void main() async
         child: MaterialApp(
           title: 'Driver App',
           theme: ThemeData(
-            primaryColor: const Color(0xffF67034),
+            primaryColor: const Color(0xff03A9F4),
           ),
-          home: const SplashScreen(),
+          home: const HomeTabPage(),
           debugShowCheckedModeBanner: false,
         ),
       ),
