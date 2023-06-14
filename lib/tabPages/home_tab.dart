@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_geofire/flutter_geofire.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -9,10 +8,10 @@ import 'package:lazis/assistants/assistant_methods.dart';
 import 'package:lazis/assistants/black_theme_google_map.dart';
 import 'package:lazis/global/global.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:lazis/mainScreen/main_Screen.dart';
+import 'package:lazis/mainScreen/main_screen.dart';
 import 'package:lazis/push_notifications/push_notification_system.dart';
 
-// import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
+import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
 
 class HomeTabPage extends StatefulWidget {
   const HomeTabPage({super.key});
@@ -59,10 +58,13 @@ class _HomeTabPageState extends State<HomeTabPage> {
         .animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
 
     String humanReadableAddress =
+        // ignore: use_build_context_synchronously
         await AssistantMethods.searchAddressForGeographicCoOrdinates(
             driverCurrentPosition!, context);
-    print("ini alamat anda = " + humanReadableAddress);
+    // ignore: avoid_print
+    print("ini alamat anda = $humanReadableAddress");
 
+    // ignore: use_build_context_synchronously
     AssistantMethods.readDriverRating(context);
   }
 
@@ -95,6 +97,7 @@ class _HomeTabPageState extends State<HomeTabPage> {
       }
     });
     PushNotificationSystem pushNotificationSystem = PushNotificationSystem();
+    // ignore: use_build_context_synchronously
     pushNotificationSystem.initializeCloudMessaging(context);
     pushNotificationSystem.generateAndGetToken();
 

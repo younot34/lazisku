@@ -28,23 +28,23 @@ class _EarningsTabPageState extends State<EarningsTabPage> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: true,
-        backgroundColor: const Color(0xff03A9F4),
+        backgroundColor: Colors.transparent,
         title: const Text(
           "Riwayat",
           style: TextStyle(
-            color: Colors.white,
+            color: Color.fromARGB(255, 244, 144, 3),
             fontSize: 24,
           ),
         ),
       ),
       body: Container(
-        color: const Color.fromARGB(205, 243, 243, 243),
+        // color: Colors.,
         child: Column(
           children: [
             //total number of trips
             ListView.separated(
               separatorBuilder: (context, i) => const Divider(
-                color: Colors.grey,
+                color: Colors.transparent,
                 thickness: 2,
                 height: 2,
               ),

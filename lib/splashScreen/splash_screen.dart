@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:lazis/authentication/login_screen.dart';
 import 'package:lazis/authentication/signup_screen.dart';
 import 'package:lazis/global/global.dart';
-import 'package:lazis/mainScreen/main_Screen.dart';
+import 'package:lazis/mainScreen/main_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
       if (await fAuth.currentUser != null) {
         currentFirebaseUser = fAuth.currentUser;
         Navigator.push(
-            context, MaterialPageRoute(builder: (c) => MainScreen()));
+            context, MaterialPageRoute(builder: (c) => const MainScreen()));
       } else {
         Navigator.push(
             context, MaterialPageRoute(builder: (c) => LoginScreen()));
@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

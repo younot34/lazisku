@@ -10,7 +10,7 @@ import 'package:lazis/mainScreen/new_trip_screen.dart';
 import 'package:lazis/models/user_ride_request_information.dart';
 import 'package:lazis/widgets/history_design_ui.dart';
 import 'package:provider/provider.dart';
-import 'package:lazis/mainScreen/main_Screen.dart';
+import 'package:lazis/mainScreen/main_screen.dart';
 
 class PermintaanTab extends StatefulWidget {
   UserRideRequestInformation? userRideRequestDetails;
@@ -22,17 +22,20 @@ class PermintaanTab extends StatefulWidget {
 }
 
 class _PermintaanTabState extends State<PermintaanTab> {
+
+
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: true,
-        backgroundColor: const Color(0xff03A9F4),
+        backgroundColor: Colors.transparent,
         title: const Text(
           "Permintaan",
           style: TextStyle(
-            color: Colors.white,
+            color: Color.fromARGB(255, 244, 144, 3),
             fontSize: 24,
           ),
         ),

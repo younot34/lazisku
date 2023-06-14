@@ -6,7 +6,6 @@ class TripsHistoryModel
   String? originAddress;
   String? destinationAddress;
   String? status;
-  String? fareAmount;
   String? userName;
   String? userPhone;
 
@@ -25,7 +24,6 @@ class TripsHistoryModel
     originAddress = (dataSnapshot.value as Map)["originAddress"];
     destinationAddress = (dataSnapshot.value as Map)["destinationAddress"];
     status = (dataSnapshot.value as Map)["status"];
-    fareAmount = (dataSnapshot.value as Map)["fareAmount"];
     userName = (dataSnapshot.value as Map)["car_details"];
     userPhone = (dataSnapshot.value as Map)["driverName"];
   }

@@ -73,11 +73,11 @@ class _ProfileTabPageState extends State<ProfileTabPage> {
         automaticallyImplyLeading: false,
         elevation: 2,
         centerTitle: true,
-        backgroundColor: const Color(0xff03A9F4),
+        backgroundColor: Colors.transparent,
         title: const Text(
-          "Profile",
+          "Profil",
           style: TextStyle(
-            color: Colors.white,
+            color: Color.fromARGB(255, 244, 144, 3),
             fontSize: 24,
           ),
         ),
@@ -92,7 +92,7 @@ class _ProfileTabPageState extends State<ProfileTabPage> {
             onlineDriverData.name!,
             style: const TextStyle(
               fontSize: 50.0,
-              color: Colors.black54,
+              color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -103,8 +103,8 @@ class _ProfileTabPageState extends State<ProfileTabPage> {
             rating: ratingsNumber,
             allowHalfRating: false,
             starCount: 5,
-            color: Colors.black54,
-            borderColor: Colors.black54,
+            color: const Color.fromARGB(255, 244, 144, 3),
+            borderColor: const Color.fromARGB(255, 244, 144, 3),
             size: 30,
           ),
 
@@ -117,7 +117,7 @@ class _ProfileTabPageState extends State<ProfileTabPage> {
             style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: Colors.black54,
+              color: Colors.white,
             ),
           ),
 
@@ -159,10 +159,10 @@ class _ProfileTabPageState extends State<ProfileTabPage> {
               fAuth.signOut();
               // Navigator.push(); menuju ke login
               Navigator.push(
-                  context, MaterialPageRoute(builder: (c) => LoginScreen()));
+                  context, MaterialPageRoute(builder: (c) => const LoginScreen()));
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xff03A9F4),
+              backgroundColor: const Color.fromARGB(255, 244, 144, 3),
             ),
             child: const Text(
               "Logout",

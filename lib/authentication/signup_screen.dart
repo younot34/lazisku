@@ -8,6 +8,8 @@ import 'package:lazis/global/global.dart';
 import 'package:lazis/widgets/progress_dialog.dart';
 
 class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
+
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
 }
@@ -50,7 +52,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     )
             .catchError((msg) {
       Navigator.pop(context);
-      Fluttertoast.showToast(msg: "Error: " + msg.toString());
+      Fluttertoast.showToast(msg: "Error: $msg");
     }))
         .user;
 
@@ -70,7 +72,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       currentFirebaseUser = firebaseUser;
       Fluttertoast.showToast(msg: "Akun telah dibuat");
       Navigator.push(
-          context, MaterialPageRoute(builder: (c) => CarInfoScreen()));
+          context, MaterialPageRoute(builder: (c) => const CarInfoScreen()));
     } else {
       Navigator.pop(context);
       Fluttertoast.showToast(msg: "Akun belum dibuat");
@@ -214,7 +216,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   //Navigator.push(context, MaterialPageRoute(builder: (c) => CarInfoScreen()));
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 32, 144, 36),
+                  backgroundColor: const Color.fromARGB(255, 32, 144, 36),
                 ),
                 child: const Text(
                   "Tambah Account",
@@ -230,7 +232,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               onPressed: () {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (c) => LoginScreen()));
+                    context, MaterialPageRoute(builder: (c) => const LoginScreen()));
               },
             ),
           ],

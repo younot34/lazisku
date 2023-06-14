@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:lazis/tabPages/earning_tab.dart';
 import 'package:provider/provider.dart';
 
 import '../infoHandler/app_info.dart';
 import '../widgets/history_design_ui.dart';
 
 class TripsHistoryScreen extends StatefulWidget {
+  const TripsHistoryScreen({super.key});
+
   @override
   State<TripsHistoryScreen> createState() => _TripsHistoryScreenState();
 }
@@ -17,7 +17,7 @@ class _TripsHistoryScreenState extends State<TripsHistoryScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(96, 0, 0, 0),
+        backgroundColor: const Color.fromARGB(96, 0, 0, 0),
         title: const Text("Riwayat Perjalanan"),
       ),
       body: ListView.separated(

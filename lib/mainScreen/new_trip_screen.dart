@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:lazis/tabPages/earning_tab.dart';
+// import 'package:lazis/tabPages/earning_tab.dart';
 
 import '../assistants/assistant_methods.dart';
 import '../assistants/black_theme_google_map.dart';
@@ -485,6 +485,7 @@ class _NewTripScreenState extends State<NewTripScreen> {
                               widget
                                   .userRideRequestDetails!.destinationLatLng!);
 
+                          // ignore: use_build_context_synchronously
                           Navigator.pop(context);
                         }
                         //[user has already sit in driver's car. Driver start trip now] - Lets Go Button
@@ -577,6 +578,7 @@ class _NewTripScreenState extends State<NewTripScreen> {
 
     streamSubscriptionDriverLivePosition!.cancel();
 
+    // ignore: use_build_context_synchronously
     Navigator.pop(context);
   }
 

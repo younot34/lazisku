@@ -5,6 +5,8 @@ import 'package:lazis/global/global.dart';
 import 'package:lazis/splashScreen/splash_screen.dart';
 
 class CarInfoScreen extends StatefulWidget {
+  const CarInfoScreen({super.key});
+
   @override
   State<CarInfoScreen> createState() => _CarInfoScreenState();
 }
@@ -162,11 +164,11 @@ class _CarInfoScreenState extends State<CarInfoScreen> {
                 },
                 items: merkMobilList.map((mobil) {
                   return DropdownMenuItem(
+                    value: mobil,
                     child: Text(
                       mobil,
                       style: const TextStyle(color: Colors.white),
                     ),
-                    value: mobil,
                   );
                 }).toList()),
             const SizedBox(
@@ -183,7 +185,7 @@ class _CarInfoScreenState extends State<CarInfoScreen> {
                   //Navigator.push(context, MaterialPageRoute(builder: (c) => CarInfoScreen()));
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 32, 144, 36),
+                  backgroundColor: const Color.fromARGB(255, 32, 144, 36),
                 ),
                 child: const Text(
                   "Simpan",
