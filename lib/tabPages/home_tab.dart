@@ -11,7 +11,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:lazis/mainScreen/main_screen.dart';
 import 'package:lazis/push_notifications/push_notification_system.dart';
 
-import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
+// import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
 
 class HomeTabPage extends StatefulWidget {
   const HomeTabPage({super.key});

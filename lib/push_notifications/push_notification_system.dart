@@ -1,13 +1,13 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:lazis/global/global.dart';
 import 'package:lazis/models/user_ride_request_information.dart';
-import 'package:lazis/push_notifications/notification_dialog_box.dart';
+// import 'package:lazis/push_notifications/notification_dialog_box.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:lazis/tabPages/permintaan_tab.dart';
+// import 'package:lazis/tabPages/permintaan_tab.dart';
 import 'package:lazis/tabPages/rating_tab.dart';
 
 class PushNotificationSystem {

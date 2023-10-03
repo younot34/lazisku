@@ -8,9 +8,9 @@ import 'package:lazis/global/global.dart';
 import 'package:lazis/infoHandler/app_info.dart';
 import 'package:lazis/mainScreen/new_trip_screen.dart';
 import 'package:lazis/models/user_ride_request_information.dart';
-import 'package:lazis/widgets/history_design_ui.dart';
+// import 'package:lazis/widgets/history_design_ui.dart';
 import 'package:provider/provider.dart';
-import 'package:lazis/mainScreen/main_screen.dart';
+// import 'package:lazis/mainScreen/main_screen.dart';
 
 class PermintaanTab extends StatefulWidget {
   UserRideRequestInformation? userRideRequestDetails;
