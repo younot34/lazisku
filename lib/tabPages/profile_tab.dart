@@ -157,15 +157,18 @@ class _ProfileTabPageState extends State<ProfileTabPage> {
             onPressed: () {
               fAuth.signOut();
               // Navigator.push(); menuju ke login
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (c) => const LoginScreen()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (c) => const LoginScreen()));
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color.fromARGB(255, 244, 144, 3),
             ),
             child: const Text(
               "Logout",
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16),
             ),
           )
         ],
