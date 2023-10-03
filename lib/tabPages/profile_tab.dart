@@ -3,10 +3,9 @@
 import 'package:lazis/authentication/login_screen.dart';
 import 'package:lazis/global/global.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:lazis/infoHandler/app_info.dart';
 import 'package:provider/provider.dart';
-import 'package:smooth_star_rating_nsafe/smooth_star_rating.dart';
+import 'package:smooth_star_rating_null_safety/smooth_star_rating_null_safety.dart';
 
 import '../widgets/info_design_ui.dart';
 

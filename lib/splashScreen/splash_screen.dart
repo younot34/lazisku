@@ -1,9 +1,6 @@
 import 'dart:async';
-// import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:lazis/authentication/login_screen.dart';
-import 'package:lazis/authentication/signup_screen.dart';
 import 'package:lazis/global/global.dart';
 import 'package:lazis/mainScreen/main_screen.dart';
 
@@ -23,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
             context, MaterialPageRoute(builder: (c) => const MainScreen()));
       } else {
         Navigator.push(
-            context, MaterialPageRoute(builder: (c) => LoginScreen()));
+            context, MaterialPageRoute(builder: (c) => const LoginScreen()));
       }
     });
   }

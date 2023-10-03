@@ -88,7 +88,7 @@ class _HomeTabPageState extends State<HomeTabPage> {
         onlineDriverData.platnomor =
             (snap.snapshot.value as Map)["detail_mobil"]["platnomor"];
         driverVehicleType =
-            (snap.snapshot.value as Map)["detail_mobils"]["type mobil"];
+            (snap.snapshot.value as Map)["detail_mobil"]["type mobil"];
 
         print("Detail Mobil :: ");
         print(onlineDriverData.warnamobil);
@@ -254,8 +254,6 @@ class _HomeTabPageState extends State<HomeTabPage> {
     ref = null;
 
     Future.delayed(const Duration(milliseconds: 2000), () {
-      //SystemChannels.platform.invokeMethod("SystemNavigator.pop");
-      // SystemNavigator.pop();
       Navigator.push(context, MaterialPageRoute(builder: (c) => const MainScreen()));
     });
   }

@@ -1,27 +1,20 @@
-import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter_polyline_points/flutter_polyline_points.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:lazis/assistants/assistant_methods.dart';
+
 import 'package:lazis/infoHandler/app_info.dart';
 import 'package:flutter/material.dart';
-import 'package:lazis/mainScreen/trips_history_screen.dart';
 import 'package:lazis/models/user_ride_request_information.dart';
 import 'package:lazis/widgets/history_design_ui.dart';
-import 'package:lazis/widgets/progress_dialog.dart';
 import 'package:provider/provider.dart';
-import 'package:lazis/mainScreen/new_trip_screen.dart';
 
-class EarningsTabPage extends StatefulWidget {
-  const EarningsTabPage(
+class RiwayatTabPage extends StatefulWidget {
+  const RiwayatTabPage(
       {Key? key, UserRideRequestInformation? userRideRequestDetails})
       : super(key: key);
 
   @override
-  _EarningsTabPageState createState() => _EarningsTabPageState();
+  _RiwayatTabPageState createState() => _RiwayatTabPageState();
 }
 
-class _EarningsTabPageState extends State<EarningsTabPage> {
+class _RiwayatTabPageState extends State<RiwayatTabPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,10 +31,8 @@ class _EarningsTabPageState extends State<EarningsTabPage> {
         ),
       ),
       body: Container(
-        // color: Colors.,
         child: Column(
           children: [
-            //total number of trips
             ListView.separated(
               separatorBuilder: (context, i) => const Divider(
                 color: Colors.transparent,

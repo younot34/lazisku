@@ -32,7 +32,7 @@ class _HistoryDesignUIWidgetState extends State<HistoryDesignUIWidget> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            //driver name + Fare Amount
+            //driver name
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -46,16 +46,6 @@ class _HistoryDesignUIWidgetState extends State<HistoryDesignUIWidget> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  width: 12,
-                ),
-                // Text(
-                //   "\$ " + widget.tripsHistoryModel!.fareAmount!,
-                //   style: const TextStyle(
-                //     fontSize: 20,
-                //     fontWeight: FontWeight.bold,
-                //   ),
-                // ),
               ],
             ),
 

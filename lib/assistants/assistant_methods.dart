@@ -104,7 +104,7 @@ class AssistantMethods {
     double totalFareAmount = timeTraveledFareAmountPerMinute +
         distanceTraveledFareAmountPerKilometer;
 
-    if (driverVehicleType == "Ambulan") {
+    if (driverVehicleType == "ABC") {
       double resultFareAmount = (totalFareAmount.truncate()) / 2.0;
       return resultFareAmount;
     } else if (driverVehicleType == "Ambulan-go") {

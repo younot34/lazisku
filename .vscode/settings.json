@@ -1,4 +1,23 @@
 {
     "java.configuration.updateBuildConfiguration": "interactive",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "cSpell.words": [
+        "ambulans",
+        "ARGB",
+        "Beranda",
+        "cupertino",
+        "Datetime",
+        "fluttertoast",
+        "geofire",
+        "geolocator",
+        "lazis",
+        "merkmobil",
+        "Permintaan",
+        "platnomor",
+        "polyline",
+        "Profil",
+        "Riwayat",
+        "unline",
+        "warnamobil"
+    ]
 }
