@@ -1,7 +1,8 @@
-
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lazis/infoHandler/app_info.dart';
 import 'package:flutter/material.dart';
 import 'package:lazis/models/user_ride_request_information.dart';
+import 'package:lazis/theme.dart';
 import 'package:lazis/widgets/history_design_ui.dart';
 import 'package:provider/provider.dart';
 
@@ -18,19 +19,21 @@ class _RiwayatTabPageState extends State<RiwayatTabPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: cWhite,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: true,
-        backgroundColor: Colors.transparent,
-        title: const Text(
+        elevation: 0.5,
+        backgroundColor: cWhite,
+        title: Text(
           "Riwayat",
-          style: TextStyle(
-            color: Color.fromARGB(255, 244, 144, 3),
-            fontSize: 24,
+          style: GoogleFonts.poppins(
+            color: cBlack,
+            fontWeight: semibold,
           ),
         ),
       ),
-      body: Container(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             ListView.separated(

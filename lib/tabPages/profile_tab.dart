@@ -1,13 +1,11 @@
-// import 'dart:html';
-
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lazis/authentication/login_screen.dart';
 import 'package:lazis/global/global.dart';
 import 'package:flutter/material.dart';
 import 'package:lazis/infoHandler/app_info.dart';
+import 'package:lazis/theme.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_star_rating_null_safety/smooth_star_rating_null_safety.dart';
-
-import '../widgets/info_design_ui.dart';
 
 class ProfileTabPage extends StatefulWidget {
   const ProfileTabPage({Key? key}) : super(key: key);
@@ -18,11 +16,10 @@ class ProfileTabPage extends StatefulWidget {
 
 class _ProfileTabPageState extends State<ProfileTabPage> {
   double ratingsNumber = 0;
-  String titleStarRating = "baik";
+  String titleStarRating = "Baik";
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     getRatingsNumber();
@@ -40,27 +37,27 @@ class _ProfileTabPageState extends State<ProfileTabPage> {
   setupRatingsTitle() {
     if (ratingsNumber == 1) {
       setState(() {
-        titleStarRating = "sangat buruk";
+        titleStarRating = "Sangat Buruk";
       });
     }
     if (ratingsNumber == 2) {
       setState(() {
-        titleStarRating = "buruk";
+        titleStarRating = "Buruk";
       });
     }
     if (ratingsNumber == 3) {
       setState(() {
-        titleStarRating = "baik";
+        titleStarRating = "Baik";
       });
     }
     if (ratingsNumber == 4) {
       setState(() {
-        titleStarRating = "sangat baik";
+        titleStarRating = "Sangat Baik";
       });
     }
     if (ratingsNumber == 5) {
       setState(() {
-        titleStarRating = "mengagumkan";
+        titleStarRating = "Mengagumkan";
       });
     }
   }
@@ -68,110 +65,261 @@ class _ProfileTabPageState extends State<ProfileTabPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: cWhite,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        elevation: 2,
+        elevation: 0.5,
         centerTitle: true,
-        backgroundColor: Colors.transparent,
-        title: const Text(
+        backgroundColor: cWhite,
+        title: Text(
           "Profil",
-          style: TextStyle(
-            color: Color.fromARGB(255, 244, 144, 3),
-            fontSize: 24,
+          style: GoogleFonts.poppins(
+            color: cBlack,
+            fontWeight: semibold,
           ),
         ),
       ),
-      body: Column(
-        children: [
-          const SizedBox(
-            height: 16,
-          ),
-          //name
-          Text(
-            onlineDriverData.name!,
-            style: const TextStyle(
-              fontSize: 50.0,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              //Nama
+              Text(
+                onlineDriverData.name!,
+                style: GoogleFonts.poppins(
+                  fontSize: 48,
+                  color: cBlack,
+                  fontWeight: bold,
+                ),
+              ),
 
-          // const SizedBox(height: 22.0,),
+              // Rating
+              SmoothStarRating(
+                rating: ratingsNumber,
+                allowHalfRating: false,
+                starCount: 5,
+                color: cOrange,
+                borderColor: cOrange,
+                size: 24,
+              ),
 
-          SmoothStarRating(
-            rating: ratingsNumber,
-            allowHalfRating: false,
-            starCount: 5,
-            color: const Color.fromARGB(255, 244, 144, 3),
-            borderColor: const Color.fromARGB(255, 244, 144, 3),
-            size: 30,
-          ),
+              const SizedBox(height: 12.0),
 
-          const SizedBox(
-            height: 12.0,
-          ),
+              // Keterangan Rating
+              Text(
+                titleStarRating,
+                style: GoogleFonts.poppins(
+                  fontSize: 18,
+                  fontWeight: semibold,
+                  color: cBlack,
+                ),
+              ),
 
-          Text(
-            titleStarRating,
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          ),
+              // Informasi Driver
+              Container(
+                margin: const EdgeInsets.only(top: 32),
+                padding: const EdgeInsets.all(16),
+                height: 177,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: cWhite,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: cGrey,
+                      blurRadius: 0.1,
+                      spreadRadius: 0.1,
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Informasi Driver',
+                      style: GoogleFonts.poppins(
+                        color: cBlack,
+                        fontSize: 16,
+                        fontWeight: semibold,
+                      ),
+                    ),
+                    const SizedBox(height: 9),
+                    Container(
+                      height: 1,
+                      width: double.infinity,
+                      color: cGrey,
+                    ),
+                    const SizedBox(height: 9),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Nomor Telepon',
+                          style: GoogleFonts.poppins(
+                            color: cGrey,
+                          ),
+                        ),
+                        Text(
+                          onlineDriverData.phone!,
+                          style: GoogleFonts.poppins(
+                            color: cBlack,
+                            fontSize: 16,
+                            fontWeight: semibold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Email',
+                          style: GoogleFonts.poppins(
+                            color: cGrey,
+                          ),
+                        ),
+                        Text(
+                          onlineDriverData.email!,
+                          style: GoogleFonts.poppins(
+                            color: cBlack,
+                            fontSize: 16,
+                            fontWeight: semibold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
 
-          const SizedBox(
-            height: 18.0,
-          ),
-          const Divider(
-            height: 4.0,
-            thickness: 4.0,
-          ),
-          const SizedBox(
-            height: 38.0,
-          ),
+              // Informasi Mobil
+              Container(
+                margin: const EdgeInsets.only(top: 18, bottom: 32),
+                padding: const EdgeInsets.all(16),
+                height: 234,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: cWhite,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: cGrey,
+                      blurRadius: 0.1,
+                      spreadRadius: 0.1,
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Informasi Mobil',
+                      style: GoogleFonts.poppins(
+                        color: cBlack,
+                        fontSize: 16,
+                        fontWeight: semibold,
+                      ),
+                    ),
+                    const SizedBox(height: 9),
+                    Container(
+                      height: 1,
+                      width: double.infinity,
+                      color: cGrey,
+                    ),
+                    const SizedBox(height: 9),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Plat Nomor',
+                          style: GoogleFonts.poppins(
+                            color: cGrey,
+                          ),
+                        ),
+                        Text(
+                          onlineDriverData.platnomor!,
+                          style: GoogleFonts.poppins(
+                            color: cBlack,
+                            fontSize: 16,
+                            fontWeight: semibold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Jenis',
+                          style: GoogleFonts.poppins(
+                            color: cGrey,
+                          ),
+                        ),
+                        Text(
+                          onlineDriverData.merkmobil!,
+                          style: GoogleFonts.poppins(
+                            color: cBlack,
+                            fontSize: 16,
+                            fontWeight: semibold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Tipe',
+                          style: GoogleFonts.poppins(
+                            color: cGrey,
+                          ),
+                        ),
+                        Text(
+                          onlineDriverData.warnamobil!,
+                          style: GoogleFonts.poppins(
+                            color: cBlack,
+                            fontSize: 16,
+                            fontWeight: semibold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
 
-          //phone
-          InfoDesignUIWidget(
-            textInfo: onlineDriverData.phone!,
-            iconData: Icons.phone_iphone,
+              Container(
+                height: 60,
+                width: double.infinity,
+                child: TextButton(
+                  onPressed: () {
+                    fAuth.signOut();
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (c) => const LoginScreen()));
+                  },
+                  style: TextButton.styleFrom(
+                    backgroundColor: cOrange,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                  child: Text(
+                    'Logout',
+                    style: GoogleFonts.poppins(
+                      color: cWhite,
+                      fontSize: 16,
+                      fontWeight: semibold,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
-
-          //email
-          InfoDesignUIWidget(
-            textInfo: onlineDriverData.email!,
-            iconData: Icons.email,
-          ),
-
-          InfoDesignUIWidget(
-            textInfo:
-                "${driverVehicleType!} ${onlineDriverData.merkmobil!} ${onlineDriverData.warnamobil!} ${onlineDriverData.platnomor!}",
-            iconData: Icons.car_repair,
-          ),
-
-          const SizedBox(
-            height: 20,
-          ),
-
-          ElevatedButton(
-            onPressed: () {
-              fAuth.signOut();
-              // Navigator.push(); menuju ke login
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (c) => const LoginScreen()));
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color.fromARGB(255, 244, 144, 3),
-            ),
-            child: const Text(
-              "Logout",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16),
-            ),
-          )
-        ],
+        ),
       ),
     );
   }

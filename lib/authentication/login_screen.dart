@@ -2,10 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-// import 'package:lazis/authentication/signup_screen.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:lazis/splashScreen/splash_screen.dart';
+import 'package:lazis/theme.dart';
 import '../global/global.dart';
 import '../widgets/progress_dialog.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -17,6 +19,9 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController passwordTextEditingController = TextEditingController();
+
+  bool _isPasswordVisible = false;
+
   validateFrom() {
     if (emailTextEditingController.text.isEmpty) {
       Fluttertoast.showToast(msg: "kolom tidak boleh kosong");
@@ -74,152 +79,148 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+  void _togglePasswordVisibility() {
+    setState(() {
+      _isPasswordVisible = !_isPasswordVisible;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        // centerTitle: true,
-        backgroundColor: Colors.transparent,
-        title: Image.asset(
-          "images/logo.png",
-          width: 115,
-          // height: 160,
-        ),
-      ),
-      backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+      backgroundColor: cWhite,
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              const SizedBox(
-                height: 150,
+              const SizedBox(height: 60),
+              Image.asset(
+                'images/logo2.png',
+                height: 80,
               ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Image.asset(
-                  "images/login.png",
-                  width: 160,
-                  // height: 160,
-                ),
+              const SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Log',
+                    style: GoogleFonts.poppins(
+                      fontSize: 32,
+                      color: cBlack,
+                      fontWeight: bold,
+                    ),
+                  ),
+                  const SizedBox(width: 6),
+                  Text(
+                    'In',
+                    style: GoogleFonts.poppins(
+                      fontSize: 32,
+                      color: cOrange,
+                      fontWeight: bold,
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(
-                height: 30,
-              ),
-
               Container(
-                child: TextFormField(
-                  controller: emailTextEditingController,
-                  keyboardType: TextInputType.emailAddress,
-                  style: const TextStyle(
-                    color: Colors.white,
-                  ),
-                  decoration: const InputDecoration(
-                    labelText: "Email",
-                    // hintText: "Email",
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(width: 3, color: Colors.white),
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                    ),
-                    // border: const BorderRadius.circular(50.0),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color.fromARGB(255, 244, 144, 3),
+                margin: const EdgeInsets.only(top: 40),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                height: 60,
+                decoration: BoxDecoration(
+                  color: c1,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        controller: emailTextEditingController,
+                        keyboardType: TextInputType.emailAddress,
+                        style: GoogleFonts.poppins(
+                          color: cBlack,
+                        ),
+                        decoration: InputDecoration(
+                          hintText: 'Email',
+                          hintStyle: GoogleFonts.poppins(
+                            color: cGrey,
+                            // fontSize: 16,
+                          ),
+                          enabledBorder: const UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.transparent),
+                          ),
+                          focusedBorder: const UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.transparent),
+                          ),
+                        ),
                       ),
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
                     ),
-                    hintStyle: TextStyle(
-                      color: Color.fromARGB(255, 244, 144, 3),
-                      fontSize: 15,
-                    ),
-                    labelStyle: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                    ),
-                  ),
+                  ],
                 ),
               ),
               const SizedBox(
                 height: 15,
               ),
               Container(
-                child: TextField(
-                  controller: passwordTextEditingController,
-                  keyboardType: TextInputType.text,
-                  obscureText: true,
-                  style: const TextStyle(
-                    color: Colors.white,
+                margin: const EdgeInsets.only(top: 6),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                height: 60,
+                decoration: BoxDecoration(
+                  color: c1,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        controller: passwordTextEditingController,
+                        obscureText: !_isPasswordVisible,
+                        keyboardType: TextInputType.emailAddress,
+                        style: GoogleFonts.poppins(
+                          color: cBlack,
+                        ),
+                        decoration: InputDecoration.collapsed(
+                          hintText: '********',
+                          hintStyle: GoogleFonts.poppins(
+                            color: cGrey,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: _togglePasswordVisibility,
+                      icon: Icon(
+                        _isPasswordVisible ? Iconsax.eye_slash : Iconsax.eye,
+                        color: cBlack,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 40),
+                height: 60,
+                width: double.infinity,
+                child: TextButton(
+                  onPressed: () {
+                    validateFrom();
+                  },
+                  style: TextButton.styleFrom(
+                    backgroundColor: cOrange,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
                   ),
-                  decoration: const InputDecoration(
-                    labelText: "Password",
-                    // hintText: "Password",
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(width: 3, color: Colors.white),
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Color.fromARGB(255, 244, 144, 3)),
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                    ),
-                    hintStyle: TextStyle(
-                      color: Color.fromARGB(255, 244, 144, 3),
-                      fontSize: 15,
-                    ),
-                    labelStyle: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
+                  child: Text(
+                    'Login',
+                    style: GoogleFonts.poppins(
+                      color: cWhite,
+                      fontSize: 16,
+                      fontWeight: semibold,
                     ),
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 40,
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    validateFrom();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 244, 144, 3),
-                  ),
-                  child: const Text(
-                    "Login",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                    ),
-                  )),
-              const SizedBox(
-                height: 30,
-              ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     const Text(
-
-              //         "Belum Punya Akun?",
-              //         style: TextStyle(color: Colors.black),
-
-              //       // onPressed: (){
-              //       //   Navigator.push(context, MaterialPageRoute(builder: (c) => SignUpScreen()));
-              //       // },
-              //     ),
-              //     const SizedBox(width: 10,),
-              //     InkWell(
-              //       child: const Text(
-              //         'Klik disini.',
-              //         style: TextStyle(
-              //           color: Colors.blue,
-              //         ),
-              //       ),
-              //       onTap: () {
-              //         Navigator.push(context, MaterialPageRoute(builder: (c) => SignUpScreen()));
-              //       },
-              //     ),
-              //   ],
-              // ),
             ],
           ),
         ),

@@ -3,15 +3,16 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lazis/assistants/assistant_methods.dart';
 import 'package:lazis/global/global.dart';
 import 'package:lazis/infoHandler/app_info.dart';
 import 'package:lazis/mainScreen/new_trip_screen.dart';
 import 'package:lazis/models/user_ride_request_information.dart';
-// import 'package:lazis/widgets/history_design_ui.dart';
+import 'package:lazis/theme.dart';
 import 'package:provider/provider.dart';
-// import 'package:lazis/mainScreen/main_screen.dart';
 
+// ignore: must_be_immutable
 class PermintaanTab extends StatefulWidget {
   UserRideRequestInformation? userRideRequestDetails;
   PermintaanTab(
@@ -22,229 +23,230 @@ class PermintaanTab extends StatefulWidget {
 }
 
 class _PermintaanTabState extends State<PermintaanTab> {
-
-
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: cWhite,
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        elevation: 0.5,
         centerTitle: true,
-        backgroundColor: Colors.transparent,
-        title: const Text(
+        backgroundColor: cWhite,
+        title: Text(
           "Permintaan",
-          style: TextStyle(
-            color: Color.fromARGB(255, 244, 144, 3),
-            fontSize: 24,
+          style: GoogleFonts.poppins(
+            color: cBlack,
+            fontWeight: semibold,
           ),
         ),
       ),
-      body: Column(
-        children: [
-          //listpermintaan
-          ListView.separated(
-            separatorBuilder: (context, i) => const Divider(
-              color: Colors.grey,
-              thickness: 2,
-              height: 2,
-            ),
-            itemBuilder: (context, i) {
-              return Card(
-                color: Colors.white54,
-                child: Container(
-                  margin: const EdgeInsets.all(8),
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.grey[800],
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const SizedBox(
-                        height: 14,
-                      ),
-
-                      Image.asset(
-                        "images/car_logo.png",
-                        width: 160,
-                      ),
-
-                      const SizedBox(
-                        height: 10,
-                      ),
-
-                      //title
-                      const Text(
-                        "Permintaan Baru",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22,
-                            color: Colors.grey),
-                      ),
-
-                      const SizedBox(height: 14.0),
-
-                      const Divider(
-                        height: 3,
-                        thickness: 3,
-                      ),
-
-                      //alamat
-                      Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Column(
-                          children: [
-                            //lokasi pasien
-                            Row(
-                              children: [
-                                Image.asset(
-                                  "images/origin.png",
-                                  width: 30,
-                                  height: 30,
-                                ),
-                                const SizedBox(
-                                  width: 14,
-                                ),
-                                Expanded(
-                                  child: Text(
-                                    widget
-                                        .userRideRequestDetails!.originAddress!,
-                                    style: const TextStyle(
-                                      fontSize: 16,
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-
-                            const SizedBox(height: 20.0),
-
-                            //lokasi perminataan
-                            Row(
-                              children: [
-                                Image.asset(
-                                  "images/destination.png",
-                                  width: 30,
-                                  height: 30,
-                                ),
-                                const SizedBox(
-                                  width: 14,
-                                ),
-                                Expanded(
-                                  child: Text(
-                                    widget.userRideRequestDetails!
-                                        .destinationAddress!,
-                                    style: const TextStyle(
-                                      fontSize: 16,
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            //listpermintaan
+            ListView.separated(
+              separatorBuilder: (context, i) => const Divider(
+                color: Colors.grey,
+                thickness: 2,
+                height: 2,
+              ),
+              itemBuilder: (context, i) {
+                return Card(
+                  color: Colors.white54,
+                  child: Container(
+                    margin: const EdgeInsets.all(8),
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.grey[800],
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const SizedBox(
+                          height: 14,
                         ),
-                      ),
 
-                      const Divider(
-                        height: 3,
-                        thickness: 3,
-                      ),
+                        Image.asset(
+                          "images/car_logo.png",
+                          width: 160,
+                        ),
 
-                      //buttons tolak terima
-                      Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.red,
+                        const SizedBox(
+                          height: 10,
+                        ),
+
+                        //title
+                        const Text(
+                          "Permintaan Baru",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 22,
+                              color: Colors.grey),
+                        ),
+
+                        const SizedBox(height: 14.0),
+
+                        const Divider(
+                          height: 3,
+                          thickness: 3,
+                        ),
+
+                        //alamat
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Column(
+                            children: [
+                              //lokasi pasien
+                              Row(
+                                children: [
+                                  Image.asset(
+                                    "images/origin.png",
+                                    width: 30,
+                                    height: 30,
+                                  ),
+                                  const SizedBox(
+                                    width: 14,
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      widget.userRideRequestDetails!
+                                          .originAddress!,
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                              onPressed: () {
-                                audioPlayer.pause();
-                                audioPlayer.stop();
-                                audioPlayer = AssetsAudioPlayer();
 
-                                //Tolak Permintaan
-                                FirebaseDatabase.instance
-                                    .ref()
-                                    .child("All Ride Requests")
-                                    .child(widget
-                                        .userRideRequestDetails!.rideRequestId!)
-                                    .remove()
-                                    .then((value) {
+                              const SizedBox(height: 20.0),
+
+                              //lokasi perminataan
+                              Row(
+                                children: [
+                                  Image.asset(
+                                    "images/destination.png",
+                                    width: 30,
+                                    height: 30,
+                                  ),
+                                  const SizedBox(
+                                    width: 14,
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      widget.userRideRequestDetails!
+                                          .destinationAddress!,
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        const Divider(
+                          height: 3,
+                          thickness: 3,
+                        ),
+
+                        //buttons tolak terima
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.red,
+                                ),
+                                onPressed: () {
+                                  audioPlayer.pause();
+                                  audioPlayer.stop();
+                                  audioPlayer = AssetsAudioPlayer();
+
+                                  //Tolak Permintaan
                                   FirebaseDatabase.instance
                                       .ref()
-                                      .child("driver")
-                                      .child(currentFirebaseUser!.uid)
-                                      .child("newRideStatus")
-                                      .set("idle");
-                                }).then((value) {
-                                  FirebaseDatabase.instance
-                                      .ref()
-                                      .child("driver")
-                                      .child(currentFirebaseUser!.uid)
-                                      .child("tripsHistory")
+                                      .child("All Ride Requests")
                                       .child(widget.userRideRequestDetails!
                                           .rideRequestId!)
-                                      .remove();
-                                }).then((value) {
-                                  Fluttertoast.showToast(
-                                      msg:
-                                          "Ride Request has been Cancelled, Successfully. Restart App Now.");
-                                });
+                                      .remove()
+                                      .then((value) {
+                                    FirebaseDatabase.instance
+                                        .ref()
+                                        .child("driver")
+                                        .child(currentFirebaseUser!.uid)
+                                        .child("newRideStatus")
+                                        .set("idle");
+                                  }).then((value) {
+                                    FirebaseDatabase.instance
+                                        .ref()
+                                        .child("driver")
+                                        .child(currentFirebaseUser!.uid)
+                                        .child("tripsHistory")
+                                        .child(widget.userRideRequestDetails!
+                                            .rideRequestId!)
+                                        .remove();
+                                  }).then((value) {
+                                    Fluttertoast.showToast(
+                                        msg:
+                                            "Ride Request has been Cancelled, Successfully. Restart App Now.");
+                                  });
 
-                                Future.delayed(
-                                    const Duration(milliseconds: 3000), () {
-                                  SystemNavigator.pop();
-                                });
-                              },
-                              child: Text(
-                                "Tolak".toUpperCase(),
-                                style: const TextStyle(
-                                  fontSize: 14.0,
+                                  Future.delayed(
+                                      const Duration(milliseconds: 3000), () {
+                                    SystemNavigator.pop();
+                                  });
+                                },
+                                child: Text(
+                                  "Tolak".toUpperCase(),
+                                  style: const TextStyle(
+                                    fontSize: 14.0,
+                                  ),
                                 ),
                               ),
-                            ),
-                            const SizedBox(width: 25.0),
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.green,
-                              ),
-                              onPressed: () {
-                                audioPlayer.pause();
-                                audioPlayer.stop();
-                                audioPlayer = AssetsAudioPlayer();
+                              const SizedBox(width: 25.0),
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.green,
+                                ),
+                                onPressed: () {
+                                  audioPlayer.pause();
+                                  audioPlayer.stop();
+                                  audioPlayer = AssetsAudioPlayer();
 
-                                //Terima permintaan
-                                acceptRideRequest(context);
-                              },
-                              child: Text(
-                                "Terima".toUpperCase(),
-                                style: const TextStyle(
-                                  fontSize: 14.0,
+                                  //Terima permintaan
+                                  acceptRideRequest(context);
+                                },
+                                child: Text(
+                                  "Terima".toUpperCase(),
+                                  style: const TextStyle(
+                                    fontSize: 14.0,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              );
-            },
-            itemCount: Provider.of<AppInfo>(context, listen: false)
-                .allTripsHistoryInformationList
-                .length,
-            physics: const ClampingScrollPhysics(),
-            shrinkWrap: true,
-          ),
-        ],
+                );
+              },
+              itemCount: Provider.of<AppInfo>(context, listen: false)
+                  .allTripsHistoryInformationList
+                  .length,
+              physics: const ClampingScrollPhysics(),
+              shrinkWrap: true,
+            ),
+          ],
+        ),
       ),
     );
   }

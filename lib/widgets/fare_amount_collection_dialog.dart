@@ -7,7 +7,7 @@ class FareAmountCollectionDialog extends StatefulWidget
 {
   double? totalFareAmount;
 
-  FareAmountCollectionDialog({this.totalFareAmount});
+  FareAmountCollectionDialog({super.key, this.totalFareAmount});
 
   @override
   State<FareAmountCollectionDialog> createState() => _FareAmountCollectionDialogState();
@@ -40,7 +40,7 @@ class _FareAmountCollectionDialogState extends State<FareAmountCollectionDialog>
             const SizedBox(height: 20,),
 
             Text(
-              "Trip Fare Amount " + "(" + driverVehicleType!.toUpperCase() + ")",
+              "Trip Fare Amount (${driverVehicleType!.toUpperCase()})",
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.grey,
@@ -106,7 +106,7 @@ class _FareAmountCollectionDialogState extends State<FareAmountCollectionDialog>
                       ),
                     ),
                     Text(
-                      "\$  " + widget.totalFareAmount!.toString(),
+                      "\$  ${widget.totalFareAmount!}",
                       style: const TextStyle(
                         fontSize: 20,
                         color: Colors.white,

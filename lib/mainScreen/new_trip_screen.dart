@@ -17,6 +17,7 @@ class NewTripScreen extends StatefulWidget {
   UserRideRequestInformation? userRideRequestDetails;
 
   NewTripScreen({
+    super.key,
     this.userRideRequestDetails,
   });
 
@@ -36,9 +37,9 @@ class _NewTripScreenState extends State<NewTripScreen> {
   String? buttonTitle = "accept";
   Color? buttonColor = Colors.green;
 
-  Set<Marker> setOfMarkers = Set<Marker>();
-  Set<Circle> setOfCircle = Set<Circle>();
-  Set<Polyline> setOfPolyline = Set<Polyline>();
+  Set<Marker> setOfMarkers = <Marker>{};
+  Set<Circle> setOfCircle = <Circle>{};
+  Set<Polyline> setOfPolyline = <Polyline>{};
   List<LatLng> polyLinePositionCoordinates = [];
   PolylinePoints polylinePoints = PolylinePoints();
 
@@ -85,10 +86,10 @@ class _NewTripScreenState extends State<NewTripScreen> {
     polyLinePositionCoordinates.clear();
 
     if (decodedPolyLinePointsResultList.isNotEmpty) {
-      decodedPolyLinePointsResultList.forEach((PointLatLng pointLatLng) {
+      for (var pointLatLng in decodedPolyLinePointsResultList) {
         polyLinePositionCoordinates
             .add(LatLng(pointLatLng.latitude, pointLatLng.longitude));
-      });
+      }
     }
 
     setOfPolyline.clear();
@@ -250,7 +251,7 @@ class _NewTripScreenState extends State<NewTripScreen> {
         onlineDriverCurrentPosition!.longitude,
       ); //Driver Lokasi terkini
 
-      var destinationLatLng;
+      LatLng? destinationLatLng;
 
       if (rideRequestStatus == "accepted") {
         destinationLatLng =
@@ -262,7 +263,7 @@ class _NewTripScreenState extends State<NewTripScreen> {
 
       var directionInformation =
           await AssistantMethods.obtainOriginToDestinationDirectionDetails(
-              originLatLng, destinationLatLng);
+              originLatLng, destinationLatLng!);
 
       if (directionInformation != null) {
         setState(() {

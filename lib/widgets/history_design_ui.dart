@@ -6,7 +6,7 @@ import '../models/trips_history_model.dart';
 class HistoryDesignUIWidget extends StatefulWidget {
   TripsHistoryModel? tripsHistoryModel;
 
-  HistoryDesignUIWidget({this.tripsHistoryModel});
+  HistoryDesignUIWidget({super.key, this.tripsHistoryModel});
 
   @override
   State<HistoryDesignUIWidget> createState() => _HistoryDesignUIWidgetState();
@@ -39,7 +39,7 @@ class _HistoryDesignUIWidgetState extends State<HistoryDesignUIWidget> {
                 Padding(
                   padding: const EdgeInsets.only(left: 6.0),
                   child: Text(
-                    "User : " + widget.tripsHistoryModel!.userName!,
+                    "User : ${widget.tripsHistoryModel!.userName!}",
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
